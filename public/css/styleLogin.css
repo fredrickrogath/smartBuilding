@@ -1,0 +1,323 @@
+/* Styles for changing looks in like , unlike and delete icons in posts and stting default font-family to be nunito */
+#like:hover {
+    font-size: 13px;
+    transition-duration: 0.5s;
+}
+#delete{
+    color:rgb(179, 30, 30);
+}
+
+#delete:hover{
+    color:rgb(114, 34, 34);
+}
+
+#unlike:hover {
+    font-size: 13px;
+    transition-duration: 0.5s;
+}
+
+#comment:hover {
+    font-size: 13px;
+    transition-duration: 0.5s;
+}
+
+#overlay {
+    overflow: scroll;
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 60px;
+    left: 100px;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 6;
+}
+
+#overlayForUserAccount {
+    overflow: scroll;
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 60px;
+    left: 100px;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 6;
+}
+
+#openCertificate {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 60px;
+    left: 100px;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#close {
+    color: #9c9c9c;
+}
+
+#closeCertificate {
+    color: #9c9c9c;
+}
+
+#close:hover {
+    color: #6c757d;
+}
+
+#closeCertificate:hover {
+    color: #6c757d;
+}
+
+#busnessLisence {
+    color: #17a2b8;
+}
+
+#busnessLisence:hover {
+    color: #57d7ee;
+    cursor: pointer;
+}
+
+#certificate {
+    color: #17a2b8;
+}
+
+#certificate:hover {
+    color: #57d7ee;
+    cursor: pointer;
+}
+
+#counters {
+    position: absolute;
+    left: 100px;
+}
+
+@media screen and (max-width: 991px){
+    #overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 60px;
+        left:30px;
+        right: 30px;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    #overlayForUserAccount {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 60px;
+        left:30px;
+        right: 30px;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    #openCertificate {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 60px;
+        left:30px;
+        right: 30px;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+        z-index: 6;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    body{
+        font-size: 13px;
+    }
+
+    /* overlay when screen is in mobile view of less than 500px */
+    #overlay {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 60px;
+        left: 0px;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 6;
+    }
+
+    #overlayForUserAccount {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 60px;
+        left: 0px;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 6;
+    }
+
+    /* openCertificate when screen is in mobile view of less than 500px */
+    #openCertificate {
+        position: fixed;
+        display: none;
+        width: 100%;
+        height: 100%;
+        top: 60px;
+        left: 0px;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    /* to remore middleName in the management table when the screen is in mobile view of less than 500px width */
+    #middleName {
+        display: none;
+    }
+
+    /* buttons color 'like , unlike + comment' in mobile view below 500px */
+
+    #pagination {
+        font-size: 12px;
+        padding-right: 90px;
+        padding-left: 90px;
+    }
+
+    #notification {
+        color: #9c9c9c ;
+        cursor:pointer ;
+    }
+
+    #notification:hover {
+        transition-duration: 0.5s;
+        color: #6c757d;
+    }
+
+    #notificationClose {
+        color: #9c9c9c ;
+    }
+
+    #notificationClose:hover {
+        transition-duration: 0.5s;
+        color: #6c757d ;
+    }
+
+    #postDetails {
+        position:absolute;
+        top:300px ;
+        width:100% ;
+        padding-bottom: 150px;
+        background-color: rgba(0, 0, 0, 0.1)
+    }
+
+    #imagePost {
+        position:absolute;
+        top:0;
+        height: 300px;
+        overflow: hidden;
+    }
+
+    #videoPost {
+        height: 290px;
+        overflow: hidden;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+
+    #notification {
+        position: relative;
+        left: 300px ;
+        top: 0px ;
+        color: #9c9c9c ;
+        cursor:pointer ;
+    }
+
+    #notification:hover {
+        transition-duration: 0.5s;
+        color:#6c757d;
+    }
+
+    #notificationClose {
+        position: relative;
+        left: 300px ;
+        top: 0px ;
+        color: #9c9c9c ;
+    }
+
+    #notificationClose:hover {
+        transition-duration: 0.5s;
+        color: #6c757d ;
+    }
+
+    #postDetails {
+        position:absolute;
+        top:600px ;
+        width:100% ;
+        padding-bottom: 120px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    #imagePost {
+        position:absolute;
+        top:0;
+        height: 600px;
+        overflow: hidden;
+    }
+
+    #videoPost {
+        height: 600px;
+        overflow: hidden;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    #postDetails {
+        position:absolute;
+        top:210px ;
+        width:100% ;
+        padding-bottom: 120px;
+        background-color: rgba(0, 0, 0, 0.1)
+    }
+
+    #imagePost {
+        position:absolute;
+        top:0;
+        height: 210px;
+        overflow: hidden;
+    }
+
+    #videoPost {
+        height: 210px;
+        overflow: hidden;
+    }
+  }
+
+  .swal-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .swal-modal {
+    background-color: #343a40;
+    color: #17a2b8;
+  }
+
+  .swal-text {
+    color: #17a2b8;
+  }
+
