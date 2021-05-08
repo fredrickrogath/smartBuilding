@@ -13,7 +13,12 @@ class Requests extends Model
         'service_provider_id',
         'request_user_id' ,
         'requestUserName',
+        'conversation_id',
         'body' ,
+        'new',
     ];
 
+    public function requests(){
+        return $this->belongsTo(Conversation::class);
+    }
 }

@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Requests;
 
 class EditProfileController extends Controller
 {
     //
     public function index(){
-        return view('editProfile');
+
+        $newRequestsCounter = Requests::where('service_provider_id' , auth()->user()->id)->where('new' , 1)->count();
+
+        return view('editProfile' , [
+            'newRequestsCounter' => $newRequestsCounter,
+        ]);
     }
 
     public function editProfileText( $column , $value ){

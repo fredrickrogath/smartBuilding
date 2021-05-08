@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Crypt;
 use App\Models\Archtecture;
 use App\Models\Seller;
 use App\Models\Builder;
+use App\Models\Requests;
 // use Illuminate\Support\Facades\Validator;
 
 class RegisterRequestsController extends Controller
@@ -19,8 +20,11 @@ class RegisterRequestsController extends Controller
     public function index($id){
         $accountType = /*Crypt::decrypt(*/$id/*)*/;
 
+        $newRequestsCounter = Requests::where('service_provider_id' , auth()->user()->id)->where('new' , 1)->count();
+
         return view('registerRequests' , [
             'accountType' => $accountType,
+            'newRequestsCounter' => $newRequestsCounter,
         ]);
     }
 

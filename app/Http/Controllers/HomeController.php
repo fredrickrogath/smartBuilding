@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Requests;
 
 class HomeController extends Controller
 {
@@ -26,8 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $search = false;
-        return view('home');
+        $newRequestsCounter = Requests::where('service_provider_id' , auth()->user()->id)->where('new' , 1)->count();
+
+        return view('home' , [
+            'newRequestsCounter' => $newRequestsCounter,
+        ]);
     }
-    
+
 }

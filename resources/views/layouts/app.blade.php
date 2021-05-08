@@ -182,42 +182,6 @@
 
         <div>
 
-<div class="container">
-
-    <div class="card bg-dark">
-        <div class="card-header d-flex justify-content-center ">
-            <div class="flex flex-column">
-                <div class="text-secondary">
-                    welcome <span class="text-info mx-1">
-                        {{ auth()->user()->firstName . ' ' . auth()->user()->middleName . ' ' . auth()->user()->lastName }}
-                    </span> to message box
-                </div>
-
-                <div class="text-center">
-                    <span class="text-secondary"> you currently have </span>
-                    <span class="text-info"> 0 </span>
-                    <span class="text-secondary">new messages</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="card-body">
-
-            <div>
-
-                <div v-for=" message in myMessages" :key="message.id" class="">
-
-                    @{{ message }}
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
-</div>
-
 
 
 
@@ -225,88 +189,179 @@
 
           `,
 
-        data: function() {
-            return {
-                myMessages: [],
+        // data: function() {
+        //     return {
+        //         myMessages: [],
+        //         newRequests: '',
+        //         authenticatedUserId: '',
+        //         myReply: '',
+        //         catchConversationIds: [],
+        //         catchConversationId: '',
+        //         authenticatedUserStatus: '',
+        //         requests: [],
+        //         requestsDetails: [],
 
-            }
-        },
+        //     }
+        // },
 
-        mounted() {
+        // mounted() {
 
-            this.liveRequestsInformation();
+        //     this.liveRequestsInformation();
 
-        },
+        // },
 
         methods: {
 
-            liveRequestsInformation: function() {
-                setInterval(() => {
+            // liveRequestsInformation: function() {
+            //     setInterval(() => {
 
-                    this.getAllRequests();
+            //         this.getAllRequests();
 
-                }, 1000);
-            },
+            //         this.newRequestsCounter();
 
-            getAllRequests: function() {
+            //         this.liveAuthenticatedUserId();
 
-                axios.get('/request/requestsCounter/')
-                    .then((response) => {
+            //         this.catchConversationIdFunction();
 
-                        console.log(response.data);
+            //         this.getConversation();
 
-                        myMessages = response.data;
+            //     }, 1000);
+            // },
 
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    })
-            },
+            // formatDate: function(time) {
+            //     return moment(time).fromNow();
+            // },
 
-            getAllRequests: function() {
+            // requestsDetailsFunction: function() {
 
-                axios.get('/request/getAllRequests/')
-                    .then((response) => {
+            //     axios.get('/requests/requestsDetails/' + this.catchConversationId)
+            //             .then((response) => {
 
-                        console.log(response.data);
+            //                 this.requestsDetails = response.data;
 
-                        myMessages = response.data;
+            //                 // console.log(response.data);
 
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    })
-            },
+            //             })
+            //             .catch(function(error) {
+            //                 console.log(error);
+            //             })
+            // },
 
-            // whatToEdit: function(value) {
-            //     this.column = value;
+            // getConversation: function() {
 
-            //     if (value == 'profile picture') {
-            //         document.getElementById('verify').style.display = 'none';
-            //         document.getElementById('inputText1').style.display = 'none';
-            //         document.getElementById('inputText2').style.display = 'none';
-            //         document.getElementById('editProfile1').style.display = 'block';
-            //         document.getElementById('editProfile2').style.display = 'block';
-            //     }
+            //     if (this.catchConversationId) {
 
-            //     if (value != 'profile picture') {
-            //         document.getElementById('verify').style.display = 'block';
-            //         document.getElementById('inputText1').style.display = 'block';
-            //         document.getElementById('inputText2').style.display = 'block';
-            //         document.getElementById('editProfile1').style.display = 'none';
-            //         document.getElementById('editProfile2').style.display = 'none';
+            //         this.requestsDetailsFunction();
+
+            //         axios.get('/requests/getConversation/' + this.catchConversationId)
+            //             .then((response) => {
+
+            //                 this.requests = response.data;
+
+            //                 // console.log(response.data);
+
+            //             })
+            //             .catch(function(error) {
+            //                 console.log(error);
+            //             })
             //     }
             // },
 
-            getPosts: function() {
-                axios.get('/posts')
-                    .then((response) => {
-                        this.chunkedPosts = _.chunk(_.toArray(response.data), 3)
-                    })
-                    .catch(function(error) {
-                        console.log(error);
-                    })
-            },
+            // liveAuthenticatedUserId: function() {
+
+            //     axios.get('/posts/liveAuthenticatedUserId')
+            //         .then((response) => {
+
+            //             this.authenticatedUserId = response.data;
+
+            //         })
+            //         .catch(function(error) {
+            //             console.log(error);
+            //         })
+            // },
+
+            // catchConversationIdFunction: function(conversationId) {
+
+            //     if (conversationId) {
+
+            //         // this.blockMyMessages = true;
+
+            //         this.catchConversationId = conversationId;
+
+            //         // console.log(conversationId);
+
+            //     }
+
+            // },
+
+            // catchConversationIdsFunction: function(conversation) {
+
+            //     this.catchConversationIds = conversation;
+
+            // },
+
+            // sendReply: function() {
+
+            //     if (this.myReply == '') {
+            //         return;
+            //     }
+
+            //     let formData = new FormData();
+
+            //     formData.append('request_user_id', this.catchConversationIds.request_user_id);
+
+            //     formData.append('service_provider_id', this.catchConversationIds.service_provider_id);
+
+            //     formData.append('body', this.myReply);
+
+            //     axios.post('/request/replyRequest', formData, {
+            //             headers: {
+            //                 'Content-Type': 'multipart/form-data'
+            //             }
+            //         })
+            //         .then((response) => {
+
+            //             this.myReply = '';
+            //             console.log(response.data);
+
+            //         })
+            //         .catch(function(error) {
+            //             console.log(error);
+            //         })
+
+            // },
+
+            // newRequestsCounter: function() {
+
+            //     axios.get('/request/requestsCounter/')
+            //         .then((response) => {
+
+            //             this.newRequests = response.data;
+
+            //         })
+            //         .catch(function(error) {
+            //             console.log(error);
+            //         })
+            // },
+
+            // getAllRequests: function() {
+
+            //     if (this.blockMyMessages == false) {
+
+            //         axios.get('/request/getAllRequests/')
+            //             .then((response) => {
+
+            //                 this.myMessages = response.data;
+
+            //                 // console.log( response.data[0].requests.length );
+
+            //             })
+            //             .catch(function(error) {
+            //                 console.log(error);
+            //             })
+
+            //     }
+            // },
 
 
         }
@@ -1222,7 +1277,7 @@
 
                         this.limitUserRating(this.user.id);
                     }
-                    console.log(this.limitLivedata);
+
 
                 }, 1000);
             },
@@ -1235,16 +1290,16 @@
 
             limitLivedataToFalse: function() {
 
-                if( this.limitLivedata == true ){
+                if (this.limitLivedata == true) {
 
                     this.limitLivedata = false;
 
-                document.getElementById("stopRating1").style.display = "block";
-                document.getElementById("stopRating2").style.display = "block";
-                document.getElementById("stopRating3").style.display = "block";
-                document.getElementById("stopRating4").style.display = "block";
-                document.getElementById("stopRating5").style.display = "block";
-                
+                    document.getElementById("stopRating1").style.display = "block";
+                    document.getElementById("stopRating2").style.display = "block";
+                    document.getElementById("stopRating3").style.display = "block";
+                    document.getElementById("stopRating4").style.display = "block";
+                    document.getElementById("stopRating5").style.display = "block";
+
                 }
 
             },
@@ -1265,8 +1320,6 @@
                     .then((response) => {
 
                         this.myRequest = '';
-                        console.log(response.data);
-
 
                     })
                     .catch(function(error) {

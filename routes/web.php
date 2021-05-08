@@ -23,22 +23,22 @@ Route::get('/', function () {
 });
 
 //route for posts
-Route::get('/posts', [App\Http\Controllers\PostController::class, 'index']);
+Route::get('/posts', [App\Http\Controllers\PostController::class, 'index'])->middleware('auth');
 Route::get('/posts', [App\Http\Controllers\PostController::class, 'posts']);
-Route::get('/posts/forSpecificUser', [App\Http\Controllers\PostController::class, 'forSpecificUser']);
+Route::get('/posts/forSpecificUser', [App\Http\Controllers\PostController::class, 'forSpecificUser'])->middleware('auth');
 Route::get('/posts/postInDetail/{postId?}', [App\Http\Controllers\PostController::class, 'postInDetail']);
-Route::get('/posts/getUserStatus', [App\Http\Controllers\PostController::class, 'getUserStatus']);
-Route::post('posts/makePost', [App\Http\Controllers\PostController::class, 'create'])->name('makePost');
-Route::get('/posts/postCategory/{filter?}', [App\Http\Controllers\PostController::class, 'postCategory']);
-Route::get('/posts/searchPost/{filter?}', [App\Http\Controllers\PostController::class, 'searchPost']);
-Route::post('/posts/likePost/', [App\Http\Controllers\PostController::class, 'likePost']);
-Route::post('/posts/unlikePost/', [App\Http\Controllers\PostController::class, 'unlikePost']);
-Route::post('/posts/makeComment', [App\Http\Controllers\PostController::class, 'makeComment']);
+Route::get('/posts/getUserStatus', [App\Http\Controllers\PostController::class, 'getUserStatus'])->middleware('auth');
+Route::post('posts/makePost', [App\Http\Controllers\PostController::class, 'create'])->name('makePost')->middleware('auth');
+Route::get('/posts/postCategory/{filter?}', [App\Http\Controllers\PostController::class, 'postCategory'])->middleware('auth');
+Route::get('/posts/searchPost/{filter?}', [App\Http\Controllers\PostController::class, 'searchPost'])->middleware('auth');
+Route::post('/posts/likePost/', [App\Http\Controllers\PostController::class, 'likePost'])->middleware('auth');
+Route::post('/posts/unlikePost/', [App\Http\Controllers\PostController::class, 'unlikePost'])->middleware('auth');
+Route::post('/posts/makeComment', [App\Http\Controllers\PostController::class, 'makeComment'])->middleware('auth');
 Route::get('/posts/getMyComment/{post_id?}', [App\Http\Controllers\PostController::class, 'getMyComment']);
 Route::get('/posts/liveAuthenticatedUserId', [App\Http\Controllers\PostController::class, 'liveAuthenticatedUserId'])->middleware('auth');
-Route::post('/posts/makeCommentReply/', [App\Http\Controllers\PostController::class, 'makeCommentReply']);
-Route::patch('/posts/deleteCommentAndReply/{commentReplyId}', [App\Http\Controllers\PostController::class, 'deleteCommentAndReply']);
-Route::patch('/posts/deletePost/{postId}', [App\Http\Controllers\PostController::class, 'deletePost']);
+Route::post('/posts/makeCommentReply/', [App\Http\Controllers\PostController::class, 'makeCommentReply'])->middleware('auth');
+Route::patch('/posts/deleteCommentAndReply/{commentReplyId}', [App\Http\Controllers\PostController::class, 'deleteCommentAndReply'])->middleware('auth');
+Route::patch('/posts/deletePost/{postId}', [App\Http\Controllers\PostController::class, 'deletePost'])->middleware('auth');
 Route::get('/posts/getPostsForSearchedUser/{userId}', [App\Http\Controllers\PostController::class, 'getPostsForSearchedUser']);
 
 //Route for home controller
@@ -79,9 +79,9 @@ Route::post('/registerRequests/{requestType?}', [App\Http\Controllers\RegisterRe
 Route::get('/account/{userId?}', [App\Http\Controllers\AccountController::class, 'index'])->name('account')->middleware('auth');
 Route::post('/account/rate', [App\Http\Controllers\AccountController::class, 'rate'])->name('rate')->middleware('auth');
 Route::get('/userInfo', [App\Http\Controllers\AccountController::class, 'user'])->name('user')->middleware('auth');
-Route::get('/account/searchUser/{userId}', [App\Http\Controllers\AccountController::class, 'searchUser'])->middleware('auth');
-Route::get('/account/postUserLikesCounter/{userId}', [App\Http\Controllers\AccountController::class, 'postUserLikesCounter'])->middleware('auth');
-Route::get('/posts/limitUserRating/{rated_user_id}', [App\Http\Controllers\AccountController::class, 'limitUserRating']);
+Route::get('/account/searchUser/{userId}', [App\Http\Controllers\AccountController::class, 'searchUser']);
+Route::get('/account/postUserLikesCounter/{userId}', [App\Http\Controllers\AccountController::class, 'postUserLikesCounter']);
+Route::get('/posts/limitUserRating/{rated_user_id}', [App\Http\Controllers\AccountController::class, 'limitUserRating'])->middleware('auth');
 
 
 // profile routes for editing
@@ -91,7 +91,11 @@ Route::post('/editProfile/editProfilePicture', [App\Http\Controllers\EditProfile
 
 
 //Rouutes for requesting for services
-Route::get('/requests', [App\Http\Controllers\RequestsController::class, 'index'])->name('requests');
+Route::get('/requests', [App\Http\Controllers\RequestsController::class, 'index'])->name('requests')->middleware('auth');
 Route::post('/request/makeRequest/', [App\Http\Controllers\RequestsController::class, 'makeRequest']);
-Route::get('/request/getAllRequests/', [App\Http\Controllers\RequestsController::class, 'getAllRequests']);
-// Route::get('/request/requestsCounter', [App\Http\Controllers\RequestsController::class, 'requestsCounter']);
+Route::get('/request/getAllRequests/', [App\Http\Controllers\RequestsController::class, 'getAllRequests'])->middleware('auth');
+Route::get('/request/requestsCounter', [App\Http\Controllers\RequestsController::class, 'requestsCounter'])->middleware('auth');
+Route::post('/request/replyRequest', [App\Http\Controllers\RequestsController::class, 'replyRequest'])->middleware('auth');
+Route::get('/requests/getConversation/{conversationId}', [App\Http\Controllers\RequestsController::class, 'getConversation'])->middleware('auth');
+Route::get('/requests/requestsDetails/{conversationId}', [App\Http\Controllers\RequestsController::class, 'requestsDetails'])->middleware('auth');
+Route::delete('/requests/deleteRequest}', [App\Http\Controllers\RequestsController::class, 'deleteRequest'])->name('deleteRequest')->middleware('auth');

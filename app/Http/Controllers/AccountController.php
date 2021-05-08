@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post;
 use App\Models\Rate;
+use App\Models\Requests;
 
 class AccountController extends Controller
 {
@@ -25,9 +26,12 @@ class AccountController extends Controller
 
         }
 
+        $newRequestsCounter = Requests::where('service_provider_id' , auth()->user()->id)->where('new' , 1)->count();
+
         return view('account' , [
             'user' => $user,
             'likesCounter' => $likesCounter,
+            'newRequestsCounter' => $newRequestsCounter ,
         ]);
     }
 

@@ -10,6 +10,7 @@ use App\Models\Archtecture;
 use App\Models\Builder;
 use App\Models\Seller;
 use App\Models\DocumentName;
+use App\Models\Requests;
 class ManageAccountsController extends Controller
 {
     //
@@ -27,7 +28,11 @@ class ManageAccountsController extends Controller
     {
         $userCount = User::all();
 
-        return view('manageAccounts');
+        $newRequestsCounter = Requests::where('service_provider_id' , auth()->user()->id)->where('new' , 1)->count();
+
+        return view('manageAccounts' , [
+            'newRequestsCounter' => $newRequestsCounter,
+        ]);
     }
 
 

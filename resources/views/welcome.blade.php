@@ -133,9 +133,204 @@
 
 
     <script>
+        //MY RATING CODE
+        Vue.component('rate', {
+            template: `
+ <div>
+
+    <span style="cursor: pointer;" class="text-secondary mr-md-5">
+        3.5 : <span id="div1" class="fa" style="color:#ffc107"></span>
+                                </span>
+
+</div>
+
+      `,
+
+            data: function() {
+                return {
+
+                }
+            },
+
+            mounted() {
+
+                this.startInterval();
+
+            },
+
+            methods: {
+
+                startInterval: function() {
+                    setInterval(() => {
+
+                        this.ratestar();
+
+                    }, 3000);
+                },
+
+                ratestar: function() {
+                    var a;
+                    a = document.getElementById("div1");
+                    a.innerHTML = "&#xf006;";
+                    setTimeout(function() {
+                        a.innerHTML = "&#xf123;";
+                    }, 1000);
+                    setTimeout(function() {
+                        a.innerHTML = "&#xf005;";
+                    }, 2000);
+                },
+
+            }
+        })
+
+        // END OF MY RATING CODE
+
+
+
         Vue.component('post-view', {
             template: `
  <div>
+
+
+
+    <div id="overlayForUserAccount" class="col-md-9">
+             <span id="close" class="fas fa-times" onclick="offUserSearch() ; hideRequestForm();"
+               style="position: absolute ; top:0 ; right:20px ; cursor: pointer; z-index:1">
+             </span>
+
+
+    <div class="container">
+
+
+        <div class="card bg-dark">
+            <div class="card-header">
+                <div>
+                    <span class="d-flex flex-fill justify-content-md-between">
+                        <a href="#" class="">
+                            <img v-if=" user.avartar " :src=" 'storage/images/' + user.avartar "
+                                class="user-image img-circle elevation-2" alt="User Image" style="width:100px">
+
+                                <img v-else :src=" 'storage/images/' + 'defaultAvatar.png' "
+                                class="user-image img-circle elevation-2" alt="User Image" style="width:100px">
+                        </a>
+
+                        <div class="w-100">
+                            <div class="mb-3">
+                                <span class="d-flex justify-content-around mb-2">
+                                    <span v-if=" user.posts " style="cursor: pointer;" class="text-secondary"> @{{ user . posts . length }} : <span
+                                            class="text-info">posts</span> </span>
+                                    <span style="cursor: pointer;" class="text-secondary"> @{{ userLikes }} : <span
+                                            class="text-info">likes</span> </span>
+                                    <rate></rate>
+                                </span>
+                            </div>
+
+                            <span class="d-flex justify-content-center mx-md-5 mx-3 mt-2">
+                                <span onclick="showRequestForm();" class="btn btn-block btn-sm btn-outline-secondary"> <span
+                                        class="spinner-grow spinner-grow-sm mr-2"></span> request service </span>
+                            </span>
+                        </div>
+
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="card-body">
+                <div class="d-flex flex-column">
+                    <span class="d-flex justify-content-between">
+                        <span class="d-flex flex-column">
+                            <span class="text-info">full name</span>
+                            <span class="text-secondary"> @{{ user . firstName }} @{{ user . middleName }} @{{ user . lastName }}
+                                 </span>
+                        </span>
+                        <span class="d-flex flex-column">
+                            <span class="text-info">archtecture</span>
+                            <span v-if=" user.archtecture === '1' "
+                                    class="text-secondary">yes</span>
+                            <span v-if=" user.archtecture === '0' "
+                                    class="text-secondary">no</span>
+                        </span>
+                        <span class="d-flex flex-column">
+                            <span class="text-info">engineer</span>
+                            <span v-if=" user.houseBuilder === '1' "
+                                    class="text-secondary">yes</span>
+                            <span v-if=" user.houseBuilder === '0' "
+                                    class="text-secondary">no</span>
+                        </span>
+                        <span class="d-flex flex-column">
+                            <span class="text-info">seller</span>
+                            <span v-if=" user.seller === '1' "
+                                    class="text-secondary">yes</span>
+                            <span v-if=" user.seller === '0' "
+                                    class="text-secondary">no</span>
+                        </span>
+                    </span>
+
+                    <span class="my-4">
+
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="email">
+                                    <button class="accordion-button collapsed btn-sm btn-dark text-secondary" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                        aria-controls="flush-collapseOne">
+                                        email contact
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse bg-dark"
+                                    aria-labelledby="email" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body text-secondary"> @{{ user . email }} </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item bg-dark">
+                                <h2 class="accordion-header" id="mobileContact">
+                                    <button class="accordion-button collapsed btn-sm btn-dark text-secondary" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                        aria-controls="flush-collapseTwo">
+                                        mobile contact
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse bg-dark"
+                                    aria-labelledby="mobileContact" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body text-secondary"> +255-@{{ user . phone }} </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="card-footer">
+
+              <div class="">
+
+                <div class="d-flex flex-column my-4 col-md-6 col-10 offset-md-1" style="position:fixed; top:350px;">
+
+                    <div class="d-flex flex-row mr-2 mt-5">
+                    <textarea id="myRequest" v-model="myRequest" rows="4" cols="4" class="form-control bg-secondary text-center mr-3" style="height:120px ; display:none; " placeholder="please put your request and your contacts"></textarea>
+                    <button id="requestButton" onclick="hideRequestForm();" v-on:click=" sendRequest( user.id ) " class="btn btn-sm btn-outline-info" style="display:none;" type="button">send</button>
+                    </div>
+
+                 </div>
+
+            </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+        </div>
+
+
+
 
     <div v-for="posts in chunkedPosts" class="d-flex flex-md-row flex-column justify-content-md-between mr-md-2">
 
@@ -301,6 +496,9 @@
                     postIdForComment: '0',
                     myCommentReply: '',
                     holdMyCommentId: '',
+                    user: [],
+                    userLikes: '',
+                    myRequest: '',
                 }
             },
 
@@ -327,12 +525,63 @@
 
                 },
 
+                getPostsForSearchedUser: function(userId) {
+
+                    axios.get('/posts/getPostsForSearchedUser/' + userId)
+                        .then((response) => {
+
+                            this.chunkedPostsForSearchedUser = _.chunk(_.toArray(response.data), 3)
+
+
+                        })
+                        .catch(function(error) {
+                            console.log(error);
+                        })
+
+                },
+
+                sendRequest: function(userId) {
+
+                    let formData = new FormData();
+
+                    formData.append('service_provider_id', userId);
+
+                    formData.append('body', this.myRequest);
+
+                    axios.post('/request/makeRequest/', formData, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data'
+                            }
+                        })
+                        .then((response) => {
+
+                            this.myRequest = '';
+
+                        })
+                        .catch(function(error) {
+                            console.log(error);
+                        })
+
+                },
+
                 searchUser: function(postDetail) {
+
+                    this.getPostsForSearchedUser(postDetail.user_id);
+
+                    axios.get('/account/postUserLikesCounter/' + postDetail.user_id)
+                        .then((response) => {
+
+                            this.userLikes = response.data;
+
+                        })
+                        .catch(function(error) {
+                            console.log(error);
+                        })
 
                     axios.get('/account/searchUser/' + postDetail.user_id)
                         .then((response) => {
 
-                            console.log(response.data);
+                            this.user = response.data[0];
 
                         })
                         .catch(function(error) {

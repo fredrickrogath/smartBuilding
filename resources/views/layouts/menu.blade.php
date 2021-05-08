@@ -94,12 +94,22 @@
                         </ul>
                     </li>
 
+                    @if (auth()->user()->archtecture == 1 || auth()->user()->houseBuilder == 1 || auth()->user()->seller == 1 && auth()->user()->block == 0)
+
                     <li class="nav-item">
                         <a href=" {{ route('requests') }} " class="nav-link">
                             <i class="fas fa-sms nav-icon"></i>
-                            <p style="font-family: 'Times New Roman', Times, serif">Messages</p>
+                            <p style="font-family: 'Times New Roman', Times, serif">Requests
+                                @if ( $newRequestsCounter )
+
+                                <span class="text-info"> {{ $newRequestsCounter }} </span> <span class="text-danger"> New </span>
+
+                                @endif
+                        </p>
                         </a>
                     </li>
+
+                    @endif
 
                     <li class="nav-item">
                         <a href=" {{ route('editProfile') }} " class="nav-link">
