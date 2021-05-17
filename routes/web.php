@@ -49,7 +49,7 @@ Auth::routes();
 
 //register controller
 Route::post('/register', [App\Http\Controllers\Auth\RegisterController::class, 'create'])->name('register');
-
+Route::post('/logout', [App\Http\Controllers\Auth\LogoutController::class, 'logout'])->name('logout');
 
 //route for customers requesting for registration
 Route::get('/registerRequests/{id?}', [App\Http\Controllers\RegisterRequestsController::class, 'index'])->name('registerRequests')->middleware('auth');

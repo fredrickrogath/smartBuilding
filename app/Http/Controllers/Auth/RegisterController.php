@@ -123,5 +123,6 @@ class RegisterController extends Controller
         //Redirect User if authentication fails
         return redirect()->back()->with('message' , 'registration failed');
     }
+
 }
 
