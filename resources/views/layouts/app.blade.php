@@ -58,7 +58,7 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed bg-dark">
+<body class="hold-transition sidebar-mini layout-fixed bg-dark sidebar-collapse">
     <div id="app" class="wrapper">
         <!-- Main Header -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-light sticky-top">
@@ -549,7 +549,7 @@
             <div class="d-flex flex-column elevation-5"
              style="height:200px ; width:100% ; position:absolute; left:0 ; right:0; cursor:pointer; background-color:black; overflow:hidden">
 
-               <video onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post" ></video>
+               <video autoplay onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post" autoplay="autoplay" controls muted></video>
 
                <img class="mt-2" v-if=" post . mediaType == 'image' " :src=" path + post.post" width="100%" height="auto" />
 
@@ -899,7 +899,7 @@
         <div v-on:click="openPost(post.post)" class="d-flex flex-column elevation-5"
             style="height:200px ; width:100% ; position:absolute; left:0 ; right:0; cursor:pointer; background-color:black; overflow:hidden;">
 
-            <video id="videoElement" onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post"></video>
+            <video id="videoElement" onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post" autoplay="autoplay" controls muted></video>
 
             <img class="mt-2" v-if=" post . mediaType == 'image'" :src=" path + post.post" width="100%" height="auto" />
 
@@ -1065,7 +1065,7 @@
             style="height:auto ; width:100% ; position:absolute; left:0; right:0; cursor:pointer; background-color:black; z-index: -2">
 
             <div class="d-flex justify-content-center" style="">
-                <div id="videoPost" class="d-flex justify-content-center"> <video onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" postInDetail . mediaType == 'video' " width="100%" height="100%" :poster=" path + postInDetail.poster " posterWidth="100%" posterHeight="100%":src="path + postInDetail.post"></video> </div>
+                <div id="videoPost" class="d-flex justify-content-center"> <video onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" postInDetail . mediaType == 'video' " width="100%" height="100%" :poster=" path + postInDetail.poster " posterWidth="100%" posterHeight="100%":src="path + postInDetail.post" autoplay="autoplay" controls muted></video> </div>
 
                 <div id="imagePost" class=""> <img class="mt-2" v-if=" postInDetail.mediaType == 'image'" :src=" path + postInDetail.post" width="100%" height="auto" /> </div>
             </div>
