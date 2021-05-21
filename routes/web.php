@@ -29,8 +29,8 @@ Route::get('/posts/forSpecificUser', [App\Http\Controllers\PostController::class
 Route::get('/posts/postInDetail/{postId?}', [App\Http\Controllers\PostController::class, 'postInDetail']);
 Route::get('/posts/getUserStatus', [App\Http\Controllers\PostController::class, 'getUserStatus'])->middleware('auth');
 Route::post('posts/makePost', [App\Http\Controllers\PostController::class, 'create'])->name('makePost')->middleware('auth');
-Route::get('/posts/postCategory/{filter?}', [App\Http\Controllers\PostController::class, 'postCategory'])->middleware('auth');
-Route::get('/posts/searchPost/{filter?}', [App\Http\Controllers\PostController::class, 'searchPost'])->middleware('auth');
+Route::get('/posts/postCategory/{filter?}', [App\Http\Controllers\PostController::class, 'postCategory']);
+Route::get('/posts/searchPost/{filter?}', [App\Http\Controllers\PostController::class, 'searchPost']);
 Route::post('/posts/likePost/', [App\Http\Controllers\PostController::class, 'likePost'])->middleware('auth');
 Route::post('/posts/unlikePost/', [App\Http\Controllers\PostController::class, 'unlikePost'])->middleware('auth');
 Route::post('/posts/makeComment', [App\Http\Controllers\PostController::class, 'makeComment'])->middleware('auth');

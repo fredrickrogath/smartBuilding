@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-secondary elevation-4">
     <a href="{{ route('home') }}" class="brand-link">
-        <img src=""
-             alt="SB"
+        <img src=" {{ asset('/storage/images/SB-logo3.png') }} "
+             alt="SB" style="backgroundColor:black"
              class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light text-info">{{ ('smartBuilding') }}</span>
     </a>

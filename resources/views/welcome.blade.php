@@ -62,9 +62,8 @@
                 <div class="d-flex flex-row justify-content-between bg-dark col-12 col-md-9" style="height:60px">
                     <div class="d-flex flex-row ml-3 mt-1">
                         <a href=" {{ url('/') }} " class="">
-                            <h6 class="text-info">smart</h6>
-                        </a> <a href="{{ url('/') }}" class="pt-2">
-                            <h5 class="text-muted">Building</h5>
+                            <img src=" {{ asset('/storage/images/SB-logo3.png') }} " style="width:45px ; backgroundColor:black"
+                                class="user-image img-circle elevation-2 mt-1" alt="User Image">
                         </a>
                     </div>
 
@@ -124,6 +123,18 @@
             </span>
 
         </div>
+
+        {{-- matangazo --}}
+
+        <div class="text-muted d-md-block d-none" style="height:100%; width:338px; position:absolute;top:0;right:0">
+            <marquee behavior="scroll" direction="up" scrollamount="1">Matangazo</marquee>
+            <marquee behavior="scroll" direction="right" scrollamount="12">Matangazo</marquee>
+            <marquee behavior="scroll" direction="left" scrollamount="10">Matangazo</marquee>
+            <marquee behavior="scroll" direction="right" scrollamount="25">Matangazo</marquee>
+            <marquee behavior="scroll" direction="down" scrollamount="1">Matangazo</marquee>
+        </div>
+
+        {{-- matangazo --}}
 
     </div>
 
