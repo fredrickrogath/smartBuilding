@@ -79,8 +79,8 @@
 
             <ul class="navbar-nav d-md-none d-inline" style="position:absolute; right:60px; top:0px;">
                 <li class="nav-link">
-                    <a type="button" class="nav-link" data-toggle="collapse" data-target="#sideBarHomePage"> <span
-                            class="fas fa-bars"></span> </a>
+                    <a type="button" class="nav-link btn" data-toggle="collapse" data-target="#sideBarHomePage"> <span
+                            class="fas fa-search"></span> </a>
                 </li>
             </ul>
 
@@ -1802,19 +1802,19 @@
 
                   <div id="counters" class="ml-5">
 
-                <span style="cursor:pointer" class="text-info mr-1"><a v-on:click="userSearch('customer');"
-                        class="text-secondary">{{ 'users : ' }}</a>
+                <span style="cursor:pointer" class="text-info mr-2"><a id="bataniZaManager" onclick="activeClass();" v-on:click="userSearch('customer');"
+                        class="bataniZaManager actv">{{ 'users ' }} <span class="text-secondary">:</span> </a>
                     @{{ userCount . countCustomer }} </span>
-                <span style="cursor:pointer" class="text-info mr-1"><a v-on:click="userSearch('archtecture');"
-                        class="text-secondary">{{ 'architectures : ' }}</a>
+                <span style="cursor:pointer" class="text-info mr-2"><a id="bataniZaManager" onclick="activeClass();" v-on:click="userSearch('archtecture');"
+                        class="bataniZaManager">{{ 'architectures ' }} <span class="text-secondary">:</span> </a>
                     @{{ userCount . countArchtecture }} </span>
-                <span style="cursor:pointer" class="text-info mr-1"><a v-on:click="userSearch('seller');"
-                        class="text-secondary">{{ 'sellers : ' }}</a>
+                <span style="cursor:pointer" class="text-info mr-1"><a id="bataniZaManager" onclick="activeClass();" v-on:click="userSearch('seller');"
+                        class="bataniZaManager">{{ 'sellers ' }} <span class="text-secondary">:</span> </a>
                     @{{ userCount . countSeller }} </span>
-                <span style="cursor:pointer" class="text-info mr-1"><a v-on:click="userSearch('houseBuilder');"
-                        class="text-secondary">{{ 'houseBuilders : ' }}</a>
+                <span style="cursor:pointer" class="text-info mr-1"><a id="bataniZaManager" onclick="activeClass();" v-on:click="userSearch('houseBuilder');"
+                        class="bataniZaManager">{{ 'houseBuilders ' }} <span class="text-secondary">:</span> </a>
                     @{{ userCount . countHouseBuilder }} </span>
-                <span style="cursor:pointer" class="text-info mr-1"><a v-on:click="userSearch('block');" class="text-secondary">{{ 'blocked : ' }}</a>
+                <span style="cursor:pointer" class="text-info mr-1"><a id="bataniZaManager" onclick="activeClass();" v-on:click="userSearch('block');" class="bataniZaManager">{{ 'blocked ' }} <span class="text-secondary">:</span> </a>
                     @{{ userCount . countBlock }} </span>
 
                    </div>

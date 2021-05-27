@@ -18,6 +18,7 @@ class Post extends Model
         'description' ,
         'userStatus' ,
         'mediaType' ,
+        'duration',
         'poster' ,
         'post' ,
         'region' ,

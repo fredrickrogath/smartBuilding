@@ -321,3 +321,11 @@
     color: #17a2b8;
   }
 
+  .actv ,.bataniZaManager:hover {
+    color: #17a2b8;
+    border-bottom: 2px solid #17a2b8;
+  }
+
+  .bataniZaManager {
+    color: #6c757d;
+  }

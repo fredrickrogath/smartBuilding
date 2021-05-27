@@ -125,6 +125,20 @@ function hideReplyRequest()
     document.getElementById("replyButton").style.display="none";
 }
 
+function activeClass(){
+
+    var header = document.getElementById("counters");
+    var btns = header.getElementsByClassName("bataniZaManager");
+    for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("actv");
+    current[0].className = current[0].className.replace(" actv", "");
+    this.className += " actv";
+  });
+
+}
+}
+
 // function showConversationFunction(){
 //     document.getElementById("showConversation").style.display="none";
 //     // document.getElementById("showConversationTime").style.display="none";

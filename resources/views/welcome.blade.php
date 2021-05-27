@@ -79,7 +79,7 @@
                         <a href=" {{ route('register') }} "
                             class="mr-md-5 mb-1 font-weight-bold text-secondary mr-2 mt-md-2 mt-3">Register</a>
                         <button type="button" class="btn btn-outline-secondary mb-1" data-toggle="collapse"
-                            data-target="#sideBar"> <span class="fas fa-bars"></span> </button>
+                            data-target="#sideBar"> <span class="fas fa-search"></span> </button>
                     </div>
                 </div>
             </div>

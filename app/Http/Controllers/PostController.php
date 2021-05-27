@@ -47,6 +47,8 @@ class PostController extends Controller
 
         $fileName = $request->file->getClientOriginalName();
 
+        // dd($request->file->getMimeType() == 'image/png' || $request->file->getMimeType() == 'image/bmp' || $request->file->getMimeType() == 'image/jpg');
+
         if( $request->poster != null ){
 
             $posterName = $request->poster->getClientOriginalName();
@@ -54,6 +56,7 @@ class PostController extends Controller
             $request->poster->storeAs('uploads', $posterName, 'public');
 
             $request->file->storeAs('uploads', $fileName, 'public');
+
 
                 // Store posts
         Post::create([
@@ -67,12 +70,22 @@ class PostController extends Controller
             'region' => auth()->user()->region ,
         ]);
 
+
+        // Get the video duration
+        // $getID3 = new \getID3;
+        // $file = $getID3->analyze( 'storage/uploads/' . $fileName );
+        // $duration = date('H:i:s', $file['playtime_seconds']);
+
+        // $post = Post::where( 'user_id' ,auth()->user()->id )->where('post' , $fileName)->update(array('duration' => $duration));
+
         return back();
+
         }
 
         $request->file->storeAs('uploads', $fileName, 'public');
 
         $posterName = $fileName;
+
 
             // Store posts
         Post::create([
@@ -85,6 +98,18 @@ class PostController extends Controller
             'post' => $fileName,
             'region' => auth()->user()->region ,
         ]);
+
+        if( $request->file->getMimeType() == 'image/png' || $request->file->getMimeType() == 'image/bmp' || $request->file->getMimeType() == 'image/jpg' || $request->file->getMimeType() == 'image/jpeg' ){
+            return back();
+        }
+
+
+        // Get the video duration
+        $getID3 = new \getID3;
+        $file = $getID3->analyze( 'storage/uploads/' . $fileName );
+        $duration = date('H:i:s', $file['playtime_seconds']);
+
+        $post = Post::where( 'user_id' ,auth()->user()->id )->where('post' , $fileName)->update(array('duration' => $duration));
 
         return back();
 

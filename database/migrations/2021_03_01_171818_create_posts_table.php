@@ -20,6 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('userStatus');
             $table->string('description');
             $table->string('mediaType');
+            $table->string('duration')->nullable();
             $table->string('post');
             $table->string('poster');
             $table->string('region');
