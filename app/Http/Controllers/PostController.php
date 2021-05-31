@@ -61,7 +61,7 @@ class PostController extends Controller
                 // Store posts
         Post::create([
             'user_id' => auth()->user()->id,
-            'sender_name' => auth()->user()->firstName . ' ' . auth()->user()->middleName . ' ' . auth()->user()->lastName,
+            'sender_name' => auth()->user()->firstName . ' ' . auth()->user()->lastName,
             'userStatus' => $request->status ,
             'description' => $request->description,
             'mediaType' => $request->picked,
@@ -90,7 +90,7 @@ class PostController extends Controller
             // Store posts
         Post::create([
             'user_id' => auth()->user()->id,
-            'sender_name' => auth()->user()->firstName . ' ' . auth()->user()->middleName . ' ' . auth()->user()->lastName,
+            'sender_name' => auth()->user()->firstName . ' ' . auth()->user()->lastName,
             'userStatus' => $request->status ,
             'description' => $request->description,
             'mediaType' => $request->picked,

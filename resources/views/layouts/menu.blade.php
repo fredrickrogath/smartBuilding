@@ -125,7 +125,7 @@
 
         {{-- if user is archtecture --}}
 
-        @if (auth()->user()->archtecture == 1 || auth()->user()->houseBuilder == 1 || auth()->user()->seller == 1 && auth()->user()->block == 0)
+        @if (auth()->user()->archtecture == 1 && auth()->user()->block == 0 || auth()->user()->houseBuilder == 1 && auth()->user()->block == 0 || auth()->user()->seller == 1 && auth()->user()->block == 0)
 
             <li class="nav-item active menu-open">
                 <a href="#" class="nav-link">

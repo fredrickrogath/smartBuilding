@@ -41,6 +41,9 @@
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -65,6 +68,10 @@
                             <img src=" {{ asset('/storage/images/SB-logo3.png') }} " style="width:45px ; backgroundColor:black"
                                 class="user-image img-circle elevation-2 mt-1" alt="User Image">
                         </a>
+
+                        <p class="vl mx-2"></p>
+
+                        <a href=" {{ url('/') }} " class="mt-2 text-secondary" style="font-size:33px ; font-family: 'Playball', cursive;">smartBuilding</a>
                     </div>
 
                     <div class="mt-4">
@@ -126,12 +133,50 @@
 
         {{-- matangazo --}}
 
-        <div class="text-muted d-md-block d-none" style="height:100%; width:338px; position:absolute;top:0;right:0">
-            <marquee behavior="scroll" direction="up" scrollamount="1">Matangazo</marquee>
+        <div class="text-muted d-md-block d-none" style="height:100%; width:338px; position:fixed;top:0;right:0">
+            {{-- <marquee behavior="scroll" direction="up" scrollamount="1">Matangazo</marquee>
             <marquee behavior="scroll" direction="right" scrollamount="12">Matangazo</marquee>
             <marquee behavior="scroll" direction="left" scrollamount="10">Matangazo</marquee>
             <marquee behavior="scroll" direction="right" scrollamount="25">Matangazo</marquee>
-            <marquee behavior="scroll" direction="down" scrollamount="1">Matangazo</marquee>
+            <marquee behavior="scroll" direction="down" scrollamount="1">Matangazo</marquee> --}}
+
+<div>
+<img src="ads/coralpaintstz~p~CI7aMlmIC36~1.jpg" alt="tangazo" style="width:330px">
+<img src="ads/coralpaintstz~p~CIXXowUABMK~1.jpg" alt="tangazo" style="width:330px">
+</div>
+
+
+            {{-- <div id="demo" class="carousel slide" data-ride="carousel" data-interval="5000"> --}}
+
+  <!-- Indicators -->
+  {{-- <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li> --}}
+    {{-- <li data-target="#demo" data-slide-to="2"></li> --}}
+  {{-- </ul> --}}
+
+  <!-- The slideshow -->
+  {{-- <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="ads/coralpaintstz~p~CI7aMlmIC36~1.jpg" alt="Los Angeles" style="width:300px">
+    </div>
+    <div class="carousel-item">
+      <img src="ads/coralpaintstz~p~CIXXowUABMK~1.jpg" alt="Chicago" style="width:300px">
+    </div> --}}
+    {{-- <div class="carousel-item">
+      <img src="ny.jpg" alt="New York">
+    </div> --}}
+  {{-- </div> --}}
+
+  <!-- Left and right controls -->
+  {{-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a> --}}
+
+{{-- </div> --}}
         </div>
 
         {{-- matangazo --}}
@@ -140,7 +185,6 @@
 
     <script src="{{ mix('js/app.js') }}" defer></script>
     <script src="{{ asset('js/style.js') }}" defer></script>
-
 
 
     <script>
@@ -352,7 +396,7 @@
         <div v-on:click="openPost(post.post)" class="d-flex flex-column elevation-5"
             style="height:200px ; width:100% ; position:absolute; left:0 ; right:0; cursor:pointer; background-color:black; overflow: hidden;">
 
-            <video onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post" autoplay="autoplay" controls muted></video>
+            <video onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post"></video>
 
             <img class="mt-2" v-if=" post . mediaType == 'image'" :src=" path + post.post" width="100%" height="auto" />
 
@@ -408,7 +452,7 @@
                              <div class="d-flex flex-column">
 
                                  <div class="d-flex flex-row">
-                                       <p class="mr-3"> <p class="mr-1 text-secondary"> commented by </p> <p class="text-primary"> @{{ getMyCommentreply . sender_name }} </p> </p>
+                                       <p class="mr-3"> <p class="mr-1 text-secondary"> replied by </p> <p class="text-primary"> @{{ getMyCommentreply . sender_name }} </p> </p>
                                        <p class="ml-3 text-primary"> @{{ formatDate(getMyCommentreply . created_at) }} </p>
                                  </div>
 

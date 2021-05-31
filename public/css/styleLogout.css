@@ -389,4 +389,7 @@
     color: #17a2b8;
   }
 
-  /* overlayForUserAccount */
+  .vl {
+  border-left: 3px solid #6c757d;
+  height: 50px;
+}

@@ -152,6 +152,7 @@
                     class="text-info">smartBuilding</a>.</strong> All rights
             reserved.
         </footer>
+
     </div>
 
     <script src="{{ mix('js/app.js') }}" defer></script>
@@ -549,7 +550,7 @@
             <div class="d-flex flex-column elevation-5"
              style="height:200px ; width:100% ; position:absolute; left:0 ; right:0; cursor:pointer; background-color:black; overflow:hidden">
 
-               <video autoplay onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post" autoplay="autoplay" controls muted></video>
+               <video autoplay onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post" controls muted></video>
 
                <img class="mt-2" v-if=" post . mediaType == 'image' " :src=" path + post.post" width="100%" height="auto" />
 
@@ -899,7 +900,7 @@
         <div v-on:click="openPost(post.post)" class="d-flex flex-column elevation-5"
             style="height:200px ; width:100% ; position:absolute; left:0 ; right:0; cursor:pointer; background-color:black; overflow:hidden;">
 
-            <video id="videoElement" onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post" autoplay="autoplay" controls muted></video>
+            <video id="videoElement" onclick="this.paused ? this.play() : this.pause();" class="video" loop="" v-if=" post . mediaType == 'video' " width="100%" height="100%" :poster=" path + post.poster " posterWidth="100%" posterHeight="100%":src="path + post.post"></video>
 
             <img class="mt-2" v-if=" post . mediaType == 'image'" :src=" path + post.post" width="100%" height="auto" />
 
@@ -1130,7 +1131,7 @@
                              <div class="d-flex flex-column">
 
                                  <div class="d-flex flex-row">
-                                       <p class="mr-3"> <p class="mr-1 text-secondary"> commented by </p> <p class="text-primary"> @{{ getMyCommentreply . sender_name }} </p> </p>
+                                       <p class="mr-3"> <p class="mr-1 text-secondary"> replied by </p> <p class="text-primary"> @{{ getMyCommentreply . sender_name }} </p> </p>
                                        <p class="ml-3 text-primary"> @{{ formatDate(getMyCommentreply . created_at) }} </p>
                                  </div>
 
@@ -1218,6 +1219,13 @@
         <a v-on:click="postCategory( 'seller' )" href="#" ><span class="fas fa-shopping-cart mr-1"></span>Material seller posts</a>
     </span>
 </div>
+
+{{-- matangazo --}}
+<div class="text-danger">
+     <img src="ads/coralpaintstz~p~CI7aMlmIC36~1.jpg" alt="tangazo" style="width:200px">
+     <img src="ads/coralpaintstz~p~CIXXowUABMK~1.jpg" alt="tangazo" style="width:200px">
+</div>
+{{-- /matangazo --}}
 
 </div>
 </div>

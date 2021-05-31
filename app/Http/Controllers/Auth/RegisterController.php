@@ -67,7 +67,7 @@ class RegisterController extends Controller
             'middleName' => 'max:100 | alpha',
             'lname' => 'required | max:100 | alpha',
             'district' => 'required | max:100',
-            'street' => 'required',
+            'street' => 'required | max:100',
             'phone' => 'required | max:9 | numeric | starts_with:6,7',
             'email' => 'required | email | max:100',
             'password' => 'required | confirmed',
