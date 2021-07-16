@@ -70,6 +70,58 @@ class EditProfileController extends Controller
         return json_encode( $column . ' is successfully updated' );
     }
 
+    public function AndroidEditProfileText( Request $request){
+        if( $request->column == 'first name'){
+            $user = User::find( $request->user_id );
+            $user->firstName = $request->value;
+            $user->save();
+        }
+        elseif( $request->column == 'middle name'){
+
+            $user = User::find( $request->user_id );
+            $user->middleName = $request->value;
+            $user->save();
+        }
+        elseif( $request->column == 'last name'){
+
+            $user = User::find( $request->user_id );
+            $user->lastName = $request->value;
+            $user->save();
+        }
+        elseif( $request->column == 'email'){
+
+            $user = User::find( $request->user_id );
+            $user->email = $request->value;
+            $user->save();
+        }
+        elseif( $request->column == 'mobile +255'){
+
+            $user = User::find( $request->user_id );
+            $user->phone = $request->value;
+            $user->save();
+        }
+        elseif( $request->column == 'region'){
+
+            $user = User::find( $request->user_id );
+            $user->region = $request->value;
+            $user->save();
+        }
+        elseif( $request->column == 'district'){
+
+            $user = User::find( $request->user_id );
+            $user->district = $request->value;
+            $user->save();
+        }
+        elseif( $request->column == 'street'){
+
+            $user = User::find( $request->user_id );
+            $user->street = $request->value;
+            $user->save();
+        }
+
+        return json_encode( 'updated successfully' );
+    }
+
     public function editProfilePicture( Request $request ){
 
             $user = User::find( auth()->user()->id );

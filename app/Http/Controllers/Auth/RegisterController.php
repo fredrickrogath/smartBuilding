@@ -68,9 +68,9 @@ class RegisterController extends Controller
             'lname' => 'required | max:100 | alpha',
             'district' => 'required | max:100',
             'street' => 'required | max:100',
-            'phone' => 'required | max:9 | numeric | starts_with:6,7',
+            'phone' => 'required | numeric | starts_with:6,7',
             'email' => 'required | email | max:100',
-            'password' => 'required | confirmed',
+            'password' => 'required | confirmed | min: 8',
         ]);
 
         //checking if User has image
@@ -105,6 +105,7 @@ class RegisterController extends Controller
             'firstName' => $request->fname,
             'middleName' => $request->mname,
             'lastName' => $request->lname,
+            'avartar' => 'defaultAvatar.png',
             'phone' => $request->phone,
             'gender' => $request->gender,
             'region' => $request->region,
@@ -122,6 +123,86 @@ class RegisterController extends Controller
 
         //Redirect User if authentication fails
         return redirect()->back()->with('message' , 'registration failed');
+    }
+
+    public function AndroidAuthenticate(Request $request)
+    {
+        $credentials = $request->only('email', 'password');
+
+        if (auth()->attempt($credentials)) {
+            // Authentication passed...
+            return json_encode(auth()->user()->id);
+        }
+        return json_encode('fail');
+    }
+
+    protected function androidRegister(Request $request)
+    {
+        // $this->validate($request, [
+        //     'image' => 'image',
+        //     'fname' => 'required | max:100 | alpha',
+        //     'middleName' => 'max:100 | alpha',
+        //     'lname' => 'required | max:100 | alpha',
+        //     'district' => 'required | max:100',
+        //     'street' => 'required | max:100',
+        //     'phone' => 'required | numeric | starts_with:6,7',
+        //     'email' => 'required | email | max:100',
+        //     'password' => 'required | confirmed',
+        // ]);
+
+        //checking if User has image
+        if ($request->hasFile('image')) {
+            $fileName = $request->image->getClientOriginalName();
+
+            //Stor User with image
+            User::create([
+                'firstName' => $request->fname,
+                'middleName' => $request->mname,
+                'lastName' => $request->lname,
+                'avartar' => $fileName,
+                'phone' => (int)$request->phone,
+                'gender' => 'not specified',
+                'region' => $request->region,
+                'district' => $request->district,
+                'street' => $request->street,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+            ]);
+
+            $request->image->storeAs('images', $fileName, 'public');
+
+            // return json_encode( $request->all() );
+
+            //authenticate User with image
+            if (auth()->attempt($request->only('email', 'password'))) {
+                // Redirect User with image
+             return json_encode( auth()->user()->id );
+            }
+        }
+
+        //Stor User
+        User::create([
+            'firstName' => $request->fname,
+            'middleName' => $request->mname,
+            'lastName' => $request->lname,
+            'avartar' => 'defaultAvatar.png',
+            'phone' => (int)$request->phone,
+            'gender' => 'not specific',
+            'region' => $request->region,
+            'district' => $request->district,
+            'street' => $request->street,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        //authenticate User
+        if (auth()->attempt($request->only('email', 'password'))) {
+            //Redirect User
+            return json_encode( auth()->user()->id );
+        }
+
+        //Redirect User if authentication fails
+        return json_encode( 'failed' );
     }
 
 }

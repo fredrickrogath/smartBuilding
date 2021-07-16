@@ -1,5 +1,9 @@
 <?php
 
+// use Auth;
+// use Illuminate\Support\Facades\Auth;
+
+// namespace App\Http\Controllers\Auth;
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -60,23 +64,85 @@ class RequestsController extends Controller
 
             Requests::create([
                 'service_provider_id' => $request->service_provider_id,
-                'request_user_id'=> '100',
-                'conversation_id' => '100',
+                'request_user_id'=> '1',
+                'conversation_id' => '1',
                 'requestUserName'=> auth()->user()->firstName . ' ' . auth()->user()->middleName . ' ' . auth()->user()->lastName,
                 'body' => $request->body,
             ]);
+
+            return json_encode( 'request sent successfully' );
 
         }
 
         else {
             Requests::create([
                 'service_provider_id' => $request->service_provider_id,
-                'request_user_id'=> '100',
-                'conversation_id' => '100',
+                'request_user_id'=> '1',
+                'conversation_id' => '1',
                 'requestUserName'=> 'unregistered',
                 'body' => $request->body,
             ]);
+
+            return json_encode( 'request sent successfully' );
         }
+
+    }
+
+    public function AndroidMakeRequest( Request $request ){
+
+        // if( Conversation::where( 'service_provider_id' , $request->service_provider_id )->where( 'request_user_id' , auth()->user()->id )->count() == '0' ){
+
+        //     if( auth()->user()->id ){
+
+        //         Conversation::create( [
+        //             'service_provider_id' => $request->service_provider_id,
+        //             'request_user_id'=> auth()->user()->id,
+        //         ] );
+
+        //     }
+
+        //     else {
+        //         Conversation::create( [
+        //             'service_provider_id' => $request->service_provider_id,
+        //             'request_user_id'=> '0',
+        //         ] );
+        //     }
+
+        // }
+
+        // $requestUserName = User::where('id', $request->request_user_id )->get();
+
+        // $conversation_id = Conversation::where( 'service_provider_id' , $request->service_provider_id )->where( 'request_user_id' , auth()->user()->id )->get();
+
+        // if ( auth()->user() ) {
+
+        //     Requests::create([
+        //         'service_provider_id' => $request->service_provider_id,
+        //         'request_user_id'=> '100',
+        //         'conversation_id' => '100',
+        //         'requestUserName'=> auth()->user()->firstName . ' ' . auth()->user()->middleName . ' ' . auth()->user()->lastName,
+        //         'body' => $request->body,
+        //     ]);
+
+        // }
+
+        // else {
+        //     Requests::create([
+        //         'service_provider_id' => $request->service_provider_id,
+        //         'request_user_id'=> '100',
+        //         'conversation_id' => '100',
+        //         'requestUserName'=> 'unregistered',
+        //         'body' => $request->body,
+        //     ]);
+        // }
+
+        Requests::create([
+                    'service_provider_id' => $request->service_provider_id,
+                    'request_user_id'=> '1',
+                    'conversation_id' => '1',
+                    'requestUserName'=> 'unregistered',
+                    'body' => $request->body,
+                ]);
 
         return json_encode( 'request sent successfully' );
     }
@@ -94,6 +160,24 @@ class RequestsController extends Controller
         }
 
         $conversations = Conversation::where('request_user_id' , auth()->user()->id)->get();
+
+        return json_encode( $conversations );
+
+    }
+
+    public function AndroidGetAllRequests( $userId ){
+
+        // $checkUserStatus = User::where('id' , $userId)->get();
+
+        // if( $checkUserStatus[0]->archtecture == '1' || $checkUserStatus[0]->seller == '1' || $checkUserStatus[0]->houseBuilder == '1' ){
+
+        //     $conversations = Conversation::with('requests')->where('service_provider_id' , $userId)->get();
+
+        //     return json_encode( $conversations );
+
+        // }
+
+        $conversations = Requests::where('service_provider_id' , $userId)->get();
 
         return json_encode( $conversations );
 
@@ -160,6 +244,12 @@ class RequestsController extends Controller
         $deleteRequest = Requests::where('id' , $request->requestId)->delete();
 
         return back();
+    }
+
+    public function AndroidDeleteRequest( $delete_id ){
+        $deleteRequest = Requests::where('id' , $delete_id )->delete();
+
+        return json_encode( 'deleted successfully' );
     }
 
 

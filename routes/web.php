@@ -98,4 +98,4 @@ Route::get('/request/requestsCounter', [App\Http\Controllers\RequestsController:
 Route::post('/request/replyRequest', [App\Http\Controllers\RequestsController::class, 'replyRequest'])->middleware('auth');
 Route::get('/requests/getConversation/{conversationId}', [App\Http\Controllers\RequestsController::class, 'getConversation'])->middleware('auth');
 Route::get('/requests/requestsDetails/{conversationId}', [App\Http\Controllers\RequestsController::class, 'requestsDetails'])->middleware('auth');
-Route::delete('/requests/deleteRequest}', [App\Http\Controllers\RequestsController::class, 'deleteRequest'])->name('deleteRequest')->middleware('auth');
+Route::delete('/requests/deleteRequest', [App\Http\Controllers\RequestsController::class, 'deleteRequest'])->name('deleteRequest')->middleware('auth');

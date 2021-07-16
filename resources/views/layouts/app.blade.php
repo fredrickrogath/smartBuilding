@@ -1329,6 +1329,11 @@
 
                         this.myRequest = '';
 
+                        swal("request sent successfully !", {
+                            button: false,
+                            timer: 3000,
+                        });
+
                     })
                     .catch(function(error) {
                         console.log(error);

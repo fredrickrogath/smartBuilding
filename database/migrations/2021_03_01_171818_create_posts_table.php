@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration
             $table->string('mediaType');
             $table->string('duration')->nullable();
             $table->string('post');
+            $table->string('cost');
+            $table->string('avartar');
             $table->string('poster');
             $table->string('region');
             $table->timestamps();

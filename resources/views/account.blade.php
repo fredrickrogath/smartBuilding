@@ -135,7 +135,13 @@
                                         </div>
 
                                         <div class="mb-md-5">
-                                            <textarea maxlength="54" name="description" type="text"
+                                        <input  name="cost" type="text"
+                                                class="form-control bg-secondary" placeholder="amount cost (Tsh)"
+                                                required>
+                                        </div>
+
+                                        <div class="mb-md-5">
+                                            <textarea maxlength="" name="description" type="text"
                                                 class="form-control bg-secondary" placeholder="post description"
                                                 required></textarea>
                                             <div class="">

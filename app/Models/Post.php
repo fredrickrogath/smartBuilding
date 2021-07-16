@@ -20,7 +20,9 @@ class Post extends Model
         'mediaType' ,
         'duration',
         'poster' ,
+        'avartar',
         'post' ,
+        'cost',
         'region' ,
     ];
 
